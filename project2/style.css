@@ -28,8 +28,8 @@ footer {
 }
 
 .jpg {
-    width: 730px;
-    height: 380px;
+    width: 225px;
+    height: 225px;
 }
 
 .inputArea {
@@ -119,3 +119,19 @@ button {
 .homeBox {
     display: inline-block;
 }
+
+.contentPanel {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    /*visibility: hidden;*/
+    flex: 1;
+}
+
+.button{
+    background-color: black;
+    color: white;
+}
+
