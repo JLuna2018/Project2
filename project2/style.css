@@ -1,0 +1,121 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    font-family: "Courier new", Courier, monospace;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    background-image: linear-gradient( gray, blue);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+}
+
+footer {
+    color: white;
+}
+
+.png {
+    width: 730px;
+    height: 380px;
+}
+
+.jpg {
+    width: 730px;
+    height: 380px;
+}
+
+.inputArea {
+    text-align: center;
+}
+
+
+/* Dropdown Button */
+.dropbtn {
+    background-color: white;
+    color: black;
+    padding: 8px;
+    font-size: 16px;
+    border: none;
+    border-radius: 12px;
+    text-align: center;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    border-radius: 12px;
+    z-index: 1;
+    left: -40px;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown-content a.exit:hover {
+    background-color: #FF0000;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: inline-block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: lightgray;
+}
+
+html, body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+    font-family: 'Century Gothic';
+}
+
+body {
+    height: 100%;
+}
+
+button {
+    border: 1px solid gray;
+    border-radius: 25px;
+    background-color: #008cff;
+    color: white;
+}
+
+.homeBox {
+    display: inline-block;
+}
