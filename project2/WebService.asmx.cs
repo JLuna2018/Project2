@@ -41,7 +41,7 @@ namespace project2
         public int NumberOfAccounts()
         {
             string sqlConnectString = System.Configuration.ConfigurationManager.ConnectionStrings["teamnala"].ConnectionString;
-            string sqlSelect = "SELECT * from users";
+            string sqlSelect = "SELECT * from employee";
 
             MySqlConnection sqlConnection = new MySqlConnection(sqlConnectString);
             MySqlCommand sqlCommand = new MySqlCommand(sqlSelect, sqlConnection);
@@ -66,7 +66,7 @@ namespace project2
 
         //EXAMPLE OF A SIMPLE SELECT QUERY (PARAMETERS PASSED IN FROM CLIENT)
         [WebMethod(EnableSession = true)] //NOTICE: gotta enable session on each individual method
-        public bool LogOn(string eMail)
+        public bool LogOn(string username)
         {
             //we return this flag to tell them if they logged in or not
             bool success = false;
@@ -75,7 +75,7 @@ namespace project2
             string sqlConnectString = System.Configuration.ConfigurationManager.ConnectionStrings["teamnala"].ConnectionString;
             //here's our query.  A basic select with nothing fancy.  Note the parameters that begin with @
             //NOTICE: we added admin to what we pull, so that we can store it along with the id in the session
-            string sqlSelect = "SELECT email FROM users WHERE email=@emailValue";
+            string sqlSelect = "SELECT username FROM employee WHERE username=@usernameValue";
 
             //set up our connection object to be ready to use our connection string
             MySqlConnection sqlConnection = new MySqlConnection(sqlConnectString);
@@ -85,7 +85,7 @@ namespace project2
             //tell our command to replace the @parameters with real values
             //we decode them because they came to us via the web so they were encoded
             //for transmission (funky characters escaped, mostly)
-            sqlCommand.Parameters.AddWithValue("@emailValue", HttpUtility.UrlDecode(eMail));
+            sqlCommand.Parameters.AddWithValue("@usernameValue", HttpUtility.UrlDecode(username));
 
             //a data adapter acts like a bridge between our command object and 
             //the data we are trying to get back and put in a table object
@@ -101,21 +101,11 @@ namespace project2
                 //if we found an account, store the id and admin status in the session
                 //so we can check those values later on other method calls to see if they 
                 //are 1) logged in at all, and 2) and admin or not
-                Session["email"] = sqlDt.Rows[0]["email"];
+                Session["username"] = sqlDt.Rows[0]["username"];
                 success = true;
             }
             //return the result!
             return success;
-        }
-
-        [WebMethod(EnableSession = true)]
-        public bool LogOff()
-        {
-            //if they log off, then we remove the session.  That way, if they access
-            //again later they have to log back on in order for their ID to be back
-            //in the session!
-            Session.Abandon();
-            return true;
         }
 
 
