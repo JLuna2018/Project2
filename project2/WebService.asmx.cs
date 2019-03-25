@@ -122,6 +122,59 @@ namespace project2
 
 
 
+        //EXAMPLE OF A SELECT, AND RETURNING "COMPLEX" DATA TYPES
+        [WebMethod(EnableSession = true)]
+        public mediaPost[] GetPosts()
+        {
+            //check out the return type.  It's an array of Account objects.  You can look at our custom Account class in this solution to see that it's 
+            //just a container for public class-level variables.  It's a simple container that asp.net will have no trouble converting into json.  When we return
+            //sets of information, it's a good idea to create a custom container class to represent instances (or rows) of that information, and then return an array of those objects.  
+            //Keeps everything simple.
+
+            //WE ONLY SHARE ACCOUNTS WITH LOGGED IN USERS!
+            if (Session["email"] != null)
+            {
+                DataTable sqlDt = new DataTable("posts");
+
+                string sqlConnectString = System.Configuration.ConfigurationManager.ConnectionStrings["myDB"].ConnectionString;
+                string sqlSelect = "select postNumber, postText from mediaposts order by postNumber";
+
+                MySqlConnection sqlConnection = new MySqlConnection(sqlConnectString);
+                MySqlCommand sqlCommand = new MySqlCommand(sqlSelect, sqlConnection);
+
+                //gonna use this to fill a data table
+                MySqlDataAdapter sqlDa = new MySqlDataAdapter(sqlCommand);
+                //filling the data table
+                sqlDa.Fill(sqlDt);
+
+                //loop through each row in the dataset, creating instances
+                //of our container class mediaPost.  Fill each mediaPost with
+                //data from the rows, then dump them in a list.
+                List<mediaPost> posts = new List<mediaPost>();
+                for (int i = 0; i < sqlDt.Rows.Count; i++)
+                {
+                        posts.Add(new mediaPost
+                        {
+                            postNumber = Convert.ToInt32(sqlDt.Rows[i]["postNumber"]),
+                            postText = sqlDt.Rows[i]["postText"].ToString(),
+                            
+                        });
+                }
+                //convert the list of posts to an array and return!
+                return posts.ToArray();
+            }
+            else
+            {
+                //if they're not logged in, return an empty array
+                return new mediaPost[0];
+            }
+        }
+
+
+
+
+
+
 
 
 
