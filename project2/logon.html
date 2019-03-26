@@ -10,7 +10,7 @@
 		//we're using a stacked card approach for our main viewing area
 		//this array holds the ids of our cards and the method
 		//allows us to easly switch the interface from one to the other
-		var contentPanels = ['logonPanel', 'homePanel', 'socialPanel', 'ideaPanel', 'profilePanel', 'reportPanel'];
+		var contentPanels = ['logonPanel', 'questionsPanel', 'homePanel', 'socialPanel', 'ideaPanel', 'profilePanel', 'reportPanel'];
 		//this function toggles which panel is showing, and also clears data from all panels
 		function showPanel(panelId) {
 			//clearData();
@@ -68,7 +68,7 @@
 					if (msg.d) {
 						//server replied true, so show the accounts panel
 						alert("Login successful! Welcome.");
-						showPanel('homePanel');
+						showPanel('questionsPanel');
 					}
 					else {
 						//server replied false, so let the user know
@@ -148,12 +148,40 @@
                     alert("Getting the Posts isn't working correctly!");
                 }
             });
-        }
+		}
+
+	
+		function CaptureQuestionAnswerOne()
+		{
+			var radios = document.getElementsByName('Q1');
+			
+			for (var i = 0; i < radios.length; i++)
+			{
+				if (radios[i].checked)
+				{
+					answer = radios[i].value;
+					alert(answer);
+				}
+
+			}
+
+			
+		}
+
+		function CaptureQuestionAnswerTwo()
+		{
+			var radios = document.getElementsByName('Q2');
+
+			for (var i = 0; i < radios.length; i++) {
+				if (radios[i].checked) {
+					answer = radios[i].value;
+					alert(answer);
+				}
+
+			}
 
 
-
-
-
+		}
     </script>
 
 
@@ -193,7 +221,30 @@
     </div>
 
 
+	<div>
+		<div id="questionsPanel" class="contentPanel" style="visibility:hidden;">
+			<div class="questionsBox" id"questionBox">
+				<h1>Please answer the questions below:</h1>
 
+				<!--QUESTION1-->
+				<br />Q1<br />
+				<input type="radio" name="Q1" value="Yes" onclick="CaptureQuestionAnswerOne();"/>Yes
+				<br />
+				<input type="radio" name="Q1" value="No" onclick="CaptureQuestionAnswerOne();"/>No
+				
+
+				<!--QUESTION2-->
+				<br />Q2<br />
+				<input type="radio" name="Q2" value="Yes" onclick="CaptureQuestionAnswerTwo();"/>Yes
+				<br />
+				<input type="radio" name="Q2" value="No" onclick="CaptureQuestionAnswerTwo();"/>No
+				
+				<!--CONTINUE TO HOMEPAGE-->
+				<button onclick="showPanel('homePanel')",
+						>Continue to Login</button>
+			</div>
+		</div>
+	</div>
 
 
 
