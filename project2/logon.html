@@ -98,8 +98,6 @@
 		}
 
         var postsArray;
-
-
         //this function grabs accounts and loads our account window
         function LoadPosts() {
             var webMethod = "WebService.asmx/GetPosts";
@@ -153,7 +151,6 @@
                             );
 
                             // testing to see if I can append things to postsBox
-                            $("#postsBox").append($('<p>Test</p>'));
                         }
                     }
                     else
@@ -170,8 +167,7 @@
 	
 		function CaptureQuestionAnswerOne()
 		{
-			var radios = document.getElementsByName('Q1');
-			
+			var radios = document.getElementsByName('Q1');	
 			for (var i = 0; i < radios.length; i++)
 			{
 				if (radios[i].checked)
@@ -179,25 +175,18 @@
 					answer = radios[i].value;
 					alert(answer);
 				}
-
 			}
-
-			
 		}
 
 		function CaptureQuestionAnswerTwo()
 		{
 			var radios = document.getElementsByName('Q2');
-
 			for (var i = 0; i < radios.length; i++) {
 				if (radios[i].checked) {
 					answer = radios[i].value;
 					alert(answer);
 				}
-
 			}
-
-
 		}
     </script>
 

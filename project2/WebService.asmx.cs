@@ -122,7 +122,7 @@ namespace project2
             //Keeps everything simple.
 
             //WE ONLY SHARE ACCOUNTS WITH LOGGED IN USERS!
-            if (Session["email"] != null)
+            if (Session["username"] != null)
             {
                 DataTable sqlDt = new DataTable("posts");
 
