@@ -113,9 +113,9 @@
                         //so we can use them in other functions as well
                         postsArray = msg.d;
                         //test
-                        console.log(postsArray);
-                        console.log(msg);
-                        console.log(msg.d);
+                        //console.log(postsArray);
+                        //console.log(msg);
+                        //console.log(msg.d);
                         //this clears out the div that will hold our account info
                         $("#postsBox").empty();
                         for (var i = 0; i < postsArray.length; i++) {
@@ -136,10 +136,12 @@
                             ////if not, then they're not an admin so don't include the edit option
                             //else {
 
-                            post = "<div class='postRow' id='post" + postsArray[i].postNumber + "'>" +
-                                postsArray[i].postText + "</div><hr>"
 
-                            console.log("1");
+                            post = "<div class='postRow' id='post" + postsArray[i].postNumber + "'>" + "<br><br>" +
+                                "<img src='https://picsum.photos/100/100/?random' alt='Random Profile Picture'>" + "<br>" +
+                                postsArray[i].postText + "<br><br> </div>"
+
+                            //console.log("1");
 
                             //}
 
@@ -148,6 +150,7 @@
                                 //will be added to the contents of that panel.  Here
                                 //we're putting together a div that holds info on the post
                                 post
+                                
                             );
 
                             // testing to see if I can append things to postsBox
@@ -189,8 +192,6 @@
 			}
 		}
     </script>
-
-
 
 </head>
 <body>
@@ -306,14 +307,16 @@
             <button onclick=showPanel('logonPanel') class="button">Exit</button>
         </div>
 
+        <div class="header-image">
+            <img src="media.png" alt="social media">
+        </div>
+
         <div id="postsBox" class="postsBox">
 
 
         </div>
 
-        <div class="header-image">
-            <img src="media.png" alt="social media">
-        </div>
+
 
 
         <footer id="footer">
