@@ -96,24 +96,31 @@
 				showPanel('logonPanel');
 			});
 		}
-	
+
+        var postsArray;
+
+
         //this function grabs accounts and loads our account window
         function LoadPosts() {
-            var webMethod = "AccountServices.asmx/GetPosts";
+            var webMethod = "WebService.asmx/GetPosts";
             $.ajax({
                 type: "POST",
                 url: webMethod,
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (msg) {
-                    if (msg.d.length > 0) {
+                    if (msg.d) { //changed it from being "msg.d.length > 0"
                         //let's put our accounts that we get from the
                         //server into our accountsArray variable
                         //so we can use them in other functions as well
                         postsArray = msg.d;
+                        //test
+                        console.log(postsArray);
+                        console.log(msg);
+                        console.log(msg.d);
                         //this clears out the div that will hold our account info
                         $("#postsBox").empty();
-                        for (var i = 0; i < accountsArray.length; i++) {
+                        for (var i = 0; i < postsArray.length; i++) {
                             //we grab on to a specific html element in jQuery
                             //by using a  # followed by that element's id.
                             var post;
@@ -131,17 +138,27 @@
                             ////if not, then they're not an admin so don't include the edit option
                             //else {
 
-                                post = "<div class='postRow' id='post" + postsArray[i].postNumber + "'>" +
-                                    "<div>" + postsArray[i].postText + "</div><hr>"
+                            post = "<div class='postRow' id='post" + postsArray[i].postNumber + "'>" +
+                                postsArray[i].postText + "</div><hr>"
+
+                            console.log("1");
 
                             //}
+
                             $("#postsBox").append(
                                 //anything we throw at our panel in the form of text
                                 //will be added to the contents of that panel.  Here
                                 //we're putting together a div that holds info on the post
                                 post
                             );
+
+                            // testing to see if I can append things to postsBox
+                            $("#postsBox").append($('<p>Test</p>'));
                         }
+                    }
+                    else
+                    {
+                        console.log("Accessing the database but not pulling down the posts?")
                     }
                 },
                 error: function (e) {
@@ -262,7 +279,7 @@
 
                     <button onclick="showPanel('ideaPanel')" class="button">Idea Submission</button>
                     <button onclick=showPanel('profilePanel') class="button">Your Profile</button>
-                    <button onclick="showPanel('socialPanel'); LoadPosts()" class="button">Social Page</button>
+                    <button onclick="LoadPosts(); showPanel('socialPanel')" class="button">Social Page</button>
                     <button onclick=showPanel('reportPanel') class="button">Report Content</button>
                     <button onclick=showPanel('logonPanel') class="button">Exit</button>
                 </div>

@@ -126,7 +126,7 @@ namespace project2
             {
                 DataTable sqlDt = new DataTable("posts");
 
-                string sqlConnectString = System.Configuration.ConfigurationManager.ConnectionStrings["myDB"].ConnectionString;
+                string sqlConnectString = System.Configuration.ConfigurationManager.ConnectionStrings["teamnala"].ConnectionString;
                 string sqlSelect = "select postNumber, postText from mediaposts order by postNumber";
 
                 MySqlConnection sqlConnection = new MySqlConnection(sqlConnectString);
