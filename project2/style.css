@@ -9,13 +9,15 @@ html {
 }
 
 body {
-    height: 100%;
+    min-height: 100%;
     margin: 0;
     background-image: linear-gradient( gray, blue);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     text-align: center;
+    width: 100%;
+    height: auto;
 }
 
 footer {
@@ -49,6 +51,7 @@ html, body {
     padding: 0px;
     overflow: hidden;
     font-family: 'Century Gothic';
+    overflow: scroll;
 }
 
 .homeBox {
@@ -81,6 +84,8 @@ html, body {
     border: 2px solid black;
     border-radius: 12px;
     background-color: ghostwhite;
+    font-size: 24px;
+    font-family: 'Bookman Old Style', fantasy;
 }
 
 [id^="smPic"] 
@@ -111,9 +116,10 @@ html, body {
     margin-right: 3px;
 }
 
-    .UpArrows:hover {
-        background-color: forestgreen;
-    }
+.UpArrows:hover 
+{
+    background-color: forestgreen;
+}
 
 .DownArrows {
     display: inline-block;
@@ -127,4 +133,12 @@ html, body {
 
 .DownArrows:hover {
     background-color: lightcoral;
+}
+
+#questionBox {
+background-color: white;
+border: 1px solid black;
+border-radius: 12px;
+width: 50%;
+font-size: 24px;
 }
