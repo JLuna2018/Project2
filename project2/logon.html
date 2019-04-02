@@ -150,6 +150,8 @@
                                 //will be added to the contents of that panel.  Here
                                 //we're putting together a div that holds info on the post
                                 post
+
+                                
                                 
                             );
 
@@ -211,13 +213,13 @@
 
                         <br>
                         <br>
-                        <button type="submit">Login!</button>
+                        <button type="submit" style="border-radius:12px;width: 10em;">Login!</button>
                     </p>
                     <br><br>
                 </form>
 
                 <div class="feedback-image">
-                    <img src="feedback.png" alt="feedback">
+                    <img src="feedback.png" alt="feedback" id="feedback-image">
                 </div>
 
             </div>
@@ -231,24 +233,24 @@
 	<div>
 		<div id="questionsPanel" class="contentPanel" style="visibility:hidden;">
 			<div class="questionsBox" id"questionBox">
-				<h1>Please answer the questions below:</h1>
+				<h1>Do us a solid and answer these quick two questions:</h1>
 
 				<!--QUESTION1-->
-				<br />Q1<br />
-				<input type="radio" name="Q1" value="Yes" onclick="CaptureQuestionAnswerOne();"/>Yes
+				<br />Sample Question #1<br />
+				<input type="radio" name="Q1" value="Yes, you guys are killing it." onclick="CaptureQuestionAnswerOne();"/>Yes
 				<br />
-				<input type="radio" name="Q1" value="No" onclick="CaptureQuestionAnswerOne();"/>No
+				<input type="radio" name="Q1" value="It could be better.." onclick="CaptureQuestionAnswerOne();"/>No
 				
 
 				<!--QUESTION2-->
-				<br />Q2<br />
-				<input type="radio" name="Q2" value="Yes" onclick="CaptureQuestionAnswerTwo();"/>Yes
+				<br />Sample Question #2<br />
+				<input type="radio" name="Q2" value="Show me the money." onclick="CaptureQuestionAnswerTwo();"/>Yes
 				<br />
-				<input type="radio" name="Q2" value="No" onclick="CaptureQuestionAnswerTwo();"/>No
-				
+				<input type="radio" name="Q2" value="More company swag!" onclick="CaptureQuestionAnswerTwo();"/>No
+				<br /><br />
 				<!--CONTINUE TO HOMEPAGE-->
 				<button onclick="showPanel('homePanel')",
-						>Continue to Login</button>
+						style="border-radius:12px;width: 10em;" >Continue to Home</button>
 			</div>
 		</div>
 	</div>
@@ -277,7 +279,7 @@
 
 
             <div class="survey-image">
-                <img src="survey.png" alt="survey">
+                <img src="survey.png" alt="survey" style="border-radius:50%;">
             </div>
 
 
@@ -294,7 +296,7 @@
 
 
     <div id="socialPanel" class="contentPanel" style="visibility:hidden;">
-        <div class="header-main">
+        <div class="header-main" style="text-align:center;">
 
             <h1>
                 Here are recent posts from your peers!
@@ -307,11 +309,12 @@
             <button onclick=showPanel('logonPanel') class="button">Exit</button>
         </div>
 
-        <div class="header-image">
-            <img src="media.png" alt="social media">
+        <div id="sHead">
+            <!--<img src="media.png" alt="social media" id="smPic">-->
+            <em>Social Media</em>
         </div>
 
-        <div id="postsBox" class="postsBox">
+        <div id="postsBox" class="postsBox" style="display:inline-block;width:50%;">
 
 
         </div>
@@ -374,13 +377,15 @@
             <button onclick=showPanel('logonPanel') class="button">Exit</button>
         </div>
 
-        <div class="header-image">
+        <div class="header-image" style="text-align: center;">
             <p><br></p>
-            <img src="https://picsum.photos/100/100/?image=7" alt="profile picture">
+            <img src="https://picsum.photos/200/300/?random" alt="profile picture" style="border-radius: 50%;">
             <p><br></p>
-            <p>Position: Systems Analyst</p>
-            <p>Department: Information Systems</p>
-            <p>Participation Points: 0<br><br></p>
+            <div id="profileInfo" style="display:inline-block;width: 50%;">
+                <p>Position: Systems Analyst</p>
+                <p>Department: Information Systems</p>
+                <p>Participation Points: 0<br><br></p>
+            </div>
         </div>
 
 
