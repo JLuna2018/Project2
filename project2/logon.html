@@ -112,33 +112,19 @@
                         //server into our accountsArray variable
                         //so we can use them in other functions as well
                         postsArray = msg.d;
-                        //test
-                        //console.log(postsArray);
-                        //console.log(msg);
-                        //console.log(msg.d);
+
                         //this clears out the div that will hold our account info
                         $("#postsBox").empty();
                         for (var i = 0; i < postsArray.length; i++) {
                             //we grab on to a specific html element in jQuery
                             //by using a  # followed by that element's id.
                             var post;
-                            //if they have access to admin-level info (like userid and password) then
-                            //create output that has an edit option
 
-                            //if (accountsArray[i].userId != null) {
-                            //    acct = "<div class='accountRow' id='acct" + accountsArray[i].id + "'>" +
-                            //        "<a class='nameTag' href='mailto:" + accountsArray[i].email + "'>" +
-                            //        accountsArray[i].firstName + " " + accountsArray[i].lastName +
-                            //        "</a> <a href='#' onclick='LoadAccount(" + accountsArray[i].id + ")' class='optionsTag'>edit</a></div><hr>"
-                            //    admin = true;
-                            //}
-
-                            ////if not, then they're not an admin so don't include the edit option
-                            //else {
 
 
                             post = "<div class='postRow' id='sm" + postsArray[i].postNumber + "'>" + "<br><br>" +
-                                "<img src='https://picsum.photos/100/100/?image="+i+"' alt='Random Profile Picture'>" + "<br>" +
+                                "<img src='vote.png' alt='voting arrows'; id='arrows';>" +
+                                "<img src='https://picsum.photos/100/100/?image=" + i + "' alt='Random Profile Picture' id='smPic" + postsArray[i].postNumber +  "'>" + " <br> " +
                                  postsArray[i].postText + "<br><br> </div>"
 
                             //console.log("1");
@@ -150,16 +136,11 @@
                                 //will be added to the contents of that panel.  Here
                                 //we're putting together a div that holds info on the post
                                 post
-
-                                
-                                
                             );
 
                             var space = $('<div><br/></div>');
 
                             $("#postsBox").append(space);
-
-                            // testing to see if I can append things to postsBox
                         }
                     }
                     else

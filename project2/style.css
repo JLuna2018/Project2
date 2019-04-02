@@ -83,16 +83,12 @@ html, body {
     background-color: ghostwhite;
 }
 
-[id^="post"]>img 
+[id^="smPic"] 
 {
     border-radius: 50%;
     display: block;
     margin-left: 5px;
 }
-
-/*#sm::after {
-    content: '<br/><br/><br/>';
-}*/
 
 #sHead 
 {
@@ -103,4 +99,11 @@ html, body {
 #profileInfo {
     border: 2px solid black;
     background-color: white;
+}
+
+#arrows {
+    display:inline;
+    width: 60px;
+    height: 40px;
+    float: right;
 }
