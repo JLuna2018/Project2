@@ -101,11 +101,30 @@ html, body {
     background-color: white;
 }
 
-.arrows {
-    display:inline-block;
+.UpArrows {
+    display: inline-block;
     width: 40px;
     height: 40px;
     float: right;
     font-size: 40px;
     border-radius: 20px;
+    margin-right: 3px;
+}
+
+    .UpArrows:hover {
+        background-color: forestgreen;
+    }
+
+.DownArrows {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    float: right;
+    font-size: 40px;
+    border-radius: 20px;
+    margin-right: 3px;
+}
+
+.DownArrows:hover {
+    background-color: lightcoral;
 }
