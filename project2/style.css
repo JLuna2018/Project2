@@ -9,11 +9,10 @@ html {
 }
 
 body {
-    min-height: 100%;
     margin: 0;
     background-image: linear-gradient( gray, blue);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: auto;
     background-position: center;
     text-align: center;
     width: 100%;
@@ -44,14 +43,14 @@ footer {
 }
 
 html, body {
+    height: 100%;
     display: flex;
     flex-direction: column;
     width: 100%;
     margin: 0px;
     padding: 0px;
-    overflow: hidden;
     font-family: 'Century Gothic';
-    overflow: scroll;
+    overflow: auto;
 }
 
 .homeBox {
