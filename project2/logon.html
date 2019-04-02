@@ -137,7 +137,7 @@
                             //else {
 
 
-                            post = "<div class='postRow' id='post" + postsArray[i].postNumber + "'>" + "<br><br>" +
+                            post = "<div class='postRow' id='sm" + postsArray[i].postNumber + "'>" + "<br><br>" +
                                 "<img src='https://picsum.photos/100/100/?image="+i+"' alt='Random Profile Picture'>" + "<br>" +
                                  postsArray[i].postText + "<br><br> </div>"
 
@@ -154,6 +154,10 @@
                                 
                                 
                             );
+
+                            var space = $('<div><br/></div>');
+
+                            $("#postsBox").append(space);
 
                             // testing to see if I can append things to postsBox
                         }
@@ -382,6 +386,7 @@
             <img src="https://picsum.photos/200/300/?random" alt="profile picture" style="border-radius: 50%;">
             <p><br></p>
             <div id="profileInfo" style="display:inline-block;width: 50%;">
+                <p><br></p>
                 <p>Position: Systems Analyst</p>
                 <p>Department: Information Systems</p>
                 <p>Participation Points: 0<br><br></p>

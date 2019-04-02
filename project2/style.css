@@ -77,7 +77,7 @@ html, body {
     background-color: red;
 }
 
-[id^="post"] {
+[id^="sm"] {
     border: 2px solid black;
     border-radius: 12px;
     background-color: ghostwhite;
@@ -90,9 +90,8 @@ html, body {
     margin-left: 5px;
 }
 
-/*#postsBox::after 
-{
-    content: "<br>";
+/*#sm::after {
+    content: '<br/><br/><br/>';
 }*/
 
 #sHead 
