@@ -77,4 +77,14 @@ html, body {
     background-color: red;
 }
 
+[id^="post"] {
+    border: 2px solid white;
+    border-radius: 12px;
+}
 
+[id^="post"]>img 
+{
+    border-radius: 50%;
+    display: block;
+    margin-left: 5px;
+}
