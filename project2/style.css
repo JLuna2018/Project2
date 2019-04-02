@@ -101,9 +101,11 @@ html, body {
     background-color: white;
 }
 
-#arrows {
-    display:inline;
-    width: 60px;
+.arrows {
+    display:inline-block;
+    width: 40px;
     height: 40px;
     float: right;
+    font-size: 40px;
+    border-radius: 20px;
 }
