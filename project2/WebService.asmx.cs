@@ -25,19 +25,6 @@ namespace project2
     {
 
         [WebMethod]
-        public string HelloWorld()
-        {
-            return "Hello World";
-        }
-
-
-
-
-
-
-
-
-        [WebMethod]
         public int NumberOfAccounts()
         {
             string sqlConnectString = System.Configuration.ConfigurationManager.ConnectionStrings["teamnala"].ConnectionString;
@@ -53,16 +40,6 @@ namespace project2
             return sqlDt.Rows.Count;
 
         }
-
-
-
-
-
-
-
-
-
-
 
         //EXAMPLE OF A SIMPLE SELECT QUERY (PARAMETERS PASSED IN FROM CLIENT)
         [WebMethod(EnableSession = true)] //NOTICE: gotta enable session on each individual method
@@ -108,10 +85,6 @@ namespace project2
             return success;
         }
 
-
-
-
-
         //EXAMPLE OF A SELECT, AND RETURNING "COMPLEX" DATA TYPES
         [WebMethod(EnableSession = true)]
         public mediaPost[] GetPosts()
@@ -156,26 +129,23 @@ namespace project2
         }
 
 
-
-
-
-
-
-
-
         [WebMethod(EnableSession = true)]
-        public void IdeaSubmission(string postText)
+        public void IdeaSubmission(string rawText)
         {
+            //bool success = false;
+
             string sqlConnectString = System.Configuration.ConfigurationManager.ConnectionStrings["teamnala"].ConnectionString;
             //the only thing fancy about this query is SELECT LAST_INSERT_ID() at the end.  All that
             //does is tell mySql server to return the primary key of the last inserted row.
-            string sqlSelect = "insert into mediaposts (postText) " +
-                "values(@postValue); SELECT LAST_INSERT_ID();";
+            string sqlSelect = "INSERT INTO `mediaposts` (rawText) VALUES (@postValue);";
 
             MySqlConnection sqlConnection = new MySqlConnection(sqlConnectString);
             MySqlCommand sqlCommand = new MySqlCommand(sqlSelect, sqlConnection);
 
-            sqlCommand.Parameters.AddWithValue("@postValue", HttpUtility.UrlDecode(postText));
+            sqlCommand.Parameters.AddWithValue("@postValue", HttpUtility.UrlDecode(rawText));
+
+            // Was trying to use this to see if query was actually affecting rows in the table
+            //int affectedRows = sqlCommand.ExecuteNonQuery();
 
         }
 

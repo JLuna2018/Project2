@@ -190,12 +190,10 @@
         }
 
         //passes account info to the server, to create an account request
-        function IdeaSubmission() {
-
-            var postText = document.getElementById("ideaText").value;
+        function IdeaSubmission(rawText) {
 
             var webMethod = "WebService.asmx/IdeaSubmission";
-            var parameters = "{\"postText\":\"" + encodeURI(postText) + "\"}";
+            var parameters = "{\"postText\":\"" + encodeURI(rawText) + "\"}";
 
             $.ajax({
                 type: "POST",
@@ -208,7 +206,7 @@
                     alert("Idea was successfully submitted!");
                 },
                 error: function (e) {
-                    alert("Idea submission was unsuccessful!");
+                    alert("Unable to contact database.");
                 }
             });
         }
@@ -384,7 +382,7 @@
             <br />
 
             <form id="ideaForm">
-                <button type="button" onclick="IdeaSubmission()" style="border-radius:12px;width: 10em;">Submit</button>
+                <button type="button" onclick="IdeaSubmission($('#ideaText').val())" style="border-radius:12px;width: 10em;">Submit</button>
             </form>
 
             <br />
