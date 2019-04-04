@@ -4,19 +4,16 @@
     font-family: "Courier new", Courier, monospace;
 }
 
-html {
-    height: 100%;
+body {
+    text-align: center;
 }
 
-body {
-    margin: 0;
-    background-image: linear-gradient( gray, blue);
-    background-repeat: no-repeat;
+html, body {
+    height: 100%;
+    overflow: auto;
+    background-color: #7FDBFF;
     background-size: auto;
     background-position: center;
-    text-align: center;
-    width: 100%;
-    height: auto;
 }
 
 footer {
@@ -42,17 +39,6 @@ footer {
     text-align: center;
 }
 
-html, body {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    margin: 0px;
-    padding: 0px;
-    font-family: 'Century Gothic';
-    overflow: auto;
-}
-
 .homeBox {
     display: inline-block;
 }
@@ -63,7 +49,6 @@ html, body {
     left: 0px;
     height: 100%;
     width: 100%;
-    /*visibility: hidden;*/
     flex: 1;
 }
 
