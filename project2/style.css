@@ -11,7 +11,7 @@ body {
 html, body {
     height: 100%;
     overflow: auto;
-    background-color: #7FDBFF;
+    background-color: #7FAAFF;
     background-size: auto;
     background-position: center;
 }
@@ -125,4 +125,9 @@ border: 1px solid black;
 border-radius: 12px;
 width: 50%;
 font-size: 24px;
+}
+
+#ideaText 
+{
+    border-radius: 10px;
 }

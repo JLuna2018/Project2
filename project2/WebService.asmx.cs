@@ -116,12 +116,7 @@ namespace project2
         [WebMethod(EnableSession = true)]
         public mediaPost[] GetPosts()
         {
-            //check out the return type.  It's an array of Account objects.  You can look at our custom Account class in this solution to see that it's 
-            //just a container for public class-level variables.  It's a simple container that asp.net will have no trouble converting into json.  When we return
-            //sets of information, it's a good idea to create a custom container class to represent instances (or rows) of that information, and then return an array of those objects.  
-            //Keeps everything simple.
 
-            //WE ONLY SHARE ACCOUNTS WITH LOGGED IN USERS!
             if (Session["username"] != null)
             {
                 DataTable sqlDt = new DataTable("posts");
@@ -168,7 +163,21 @@ namespace project2
 
 
 
+        [WebMethod(EnableSession = true)]
+        public void IdeaSubmission(string postText)
+        {
+            string sqlConnectString = System.Configuration.ConfigurationManager.ConnectionStrings["teamnala"].ConnectionString;
+            //the only thing fancy about this query is SELECT LAST_INSERT_ID() at the end.  All that
+            //does is tell mySql server to return the primary key of the last inserted row.
+            string sqlSelect = "insert into mediaposts (postText) " +
+                "values(@postValue); SELECT LAST_INSERT_ID();";
 
+            MySqlConnection sqlConnection = new MySqlConnection(sqlConnectString);
+            MySqlCommand sqlCommand = new MySqlCommand(sqlSelect, sqlConnection);
+
+            sqlCommand.Parameters.AddWithValue("@postValue", HttpUtility.UrlDecode(postText));
+
+        }
 
 
     }

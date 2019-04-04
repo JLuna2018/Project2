@@ -189,6 +189,35 @@
 
         }
 
+        //passes account info to the server, to create an account request
+        function IdeaSubmission() {
+
+            var postText = document.getElementById("ideaText").value;
+
+            var webMethod = "WebService.asmx/IdeaSubmission";
+            var parameters = "{\"postText\":\"" + encodeURI(postText) + "\"}";
+
+            $.ajax({
+                type: "POST",
+                url: webMethod,
+                data: parameters,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (msg) {
+                    // should it be an idea post per session? or unlimited posts
+                    alert("Idea was successfully submitted!");
+                },
+                error: function (e) {
+                    alert("Idea submission was unsuccessful!");
+                }
+            });
+        }
+
+
+
+
+
+
     </script>
 
 </head>
@@ -347,9 +376,22 @@
         </div>
 
         <div class="header-image">
-            <img src="idea.png" alt="lightbulb">
+            <img src="idea.png" alt="lightbulb" style="border-radius: 50%;">
         </div>
 
+        <div>
+
+            <br />
+
+            <form id="ideaForm">
+                <button type="button" onclick="IdeaSubmission()" style="border-radius:12px;width: 10em;">Submit</button>
+            </form>
+
+            <br />
+
+            <textarea rows="8" cols="50" id="ideaText" name="comment" form="ideaForm" autofocus placeholder="Submit your idea here!"></textarea>
+
+        </div>
 
         <footer id="footer">
             Copyright &copy; 2019 Team Nala
