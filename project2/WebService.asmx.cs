@@ -130,19 +130,19 @@ namespace project2
 
 
         [WebMethod(EnableSession = true)]
-        public void IdeaSubmission(string rawText)
+        public void IdeaSubmission(string postText)
         {
             //bool success = false;
 
             string sqlConnectString = System.Configuration.ConfigurationManager.ConnectionStrings["teamnala"].ConnectionString;
             //the only thing fancy about this query is SELECT LAST_INSERT_ID() at the end.  All that
             //does is tell mySql server to return the primary key of the last inserted row.
-            string sqlSelect = "INSERT INTO `mediaposts` (rawText) VALUES (@postValue);";
+            string sqlSelect = "INSERT INTO mediaposts (rawText) VALUES (@postValue);";
 
             MySqlConnection sqlConnection = new MySqlConnection(sqlConnectString);
             MySqlCommand sqlCommand = new MySqlCommand(sqlSelect, sqlConnection);
 
-            sqlCommand.Parameters.AddWithValue("@postValue", HttpUtility.UrlDecode(rawText));
+            sqlCommand.Parameters.AddWithValue("@postValue", HttpUtility.UrlDecode(postText));
 
             // Was trying to use this to see if query was actually affecting rows in the table
             //int affectedRows = sqlCommand.ExecuteNonQuery();

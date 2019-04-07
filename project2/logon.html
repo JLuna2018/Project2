@@ -109,7 +109,7 @@
                 success: function (msg) {
                     if (msg.d) { //changed it from being "msg.d.length > 0"
                         //let's put our accounts that we get from the
-                        //server into our accountsArray variable
+                        //server into our postsArray variable
                         //so we can use them in other functions as well
                         postsArray = msg.d;
 
@@ -192,8 +192,12 @@
         //passes account info to the server, to create an account request
         function IdeaSubmission(rawText) {
 
+            //console.log(rawText);
+
             var webMethod = "WebService.asmx/IdeaSubmission";
             var parameters = "{\"postText\":\"" + encodeURI(rawText) + "\"}";
+
+            //console.log(parameters);
 
             $.ajax({
                 type: "POST",
