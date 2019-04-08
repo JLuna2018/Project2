@@ -72,11 +72,11 @@ footer {
     font-family: 'Bookman Old Style', fantasy;
 }
 
-[id^="smPic"] 
-{
+[id^="smPic"] {
     border-radius: 50%;
     display: block;
     margin-left: 5px;
+    
 }
 
 #sHead 
@@ -130,4 +130,31 @@ font-size: 24px;
 #ideaText 
 {
     border-radius: 10px;
+}
+
+#Graph1
+{
+    float: left;
+    width: 30%;
+    height: 30%;
+}
+
+#Graph2
+{
+    float: right;
+    clear: right;
+    width: 30%;
+    height: 30%;
+}
+
+#Graph3
+{
+    clear: both;
+    width: 30%;
+    height: 30%;
+}
+
+.spaceCreate 
+{
+    clear: both;
 }
