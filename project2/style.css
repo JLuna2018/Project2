@@ -134,24 +134,21 @@ font-size: 24px;
 
 #Graph1
 {
-    float: left;
-    width: 30%;
-    height: 30%;
+    width: 25%;
+    height: 25%;
 }
 
-#Graph2
-{
-    float: right;
-    clear: right;
-    width: 30%;
-    height: 30%;
+#Graph2 {
+    width: 25%;
+    height: 25%;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
 #Graph3
 {
-    clear: both;
-    width: 30%;
-    height: 30%;
+    width: 25%;
+    height: 25%;
 }
 
 .spaceCreate 
