@@ -69,6 +69,7 @@
 						//server replied true, so show the accounts panel
 						alert("Login successful! Welcome.");
 						showPanel('questionsPanel');
+						LoadQuestions();
 					}
 					else {
 						//server replied false, so let the user know
@@ -154,30 +155,88 @@
             });
 		}
 
+		function LoadQuestions() {
+			var webMethod = "WebService.asmx/GetQuestions";
+			$.ajax({
+				type: "POST",
+				url: webMethod,
+				contentType: "application/json; charset=utf-8",
+				dataType: "json",
+				success: function (msg) {
+					if (msg.d) { //changed it from being "msg.d.length > 0"
+						//let's put our accounts that we get from the
+						//server into our accountsArray variable
+						//so we can use them in other functions as well
+						questionsArray = msg.d;
+
+						//this clears out the div that will hold our account info
+						$("#questionBox").empty();
+						for (var i = 0; i < questionsArray.length; i++) {
+							//we grab on to a specific html element in jQuery
+							//by using a  # followed by that element's id.
+							var question;
+
+
+
+							question = "<div class='questionRow' id='qr" + questionsArray[i].questionText + "'>" + "<br>" +
+								"<" + questionsArray[i].questionText + "'>" + " <br> " +
+								"Question Category: " + questionsArray[i].questionCategory + " <br> " + questionsArray[i].questionText + " <br> " + "</div>"
+
+							//console.log("1");
+
+							//}
+
+							$("#questionBox").append(question
+								//anything we throw at our panel in the form of text
+								//will be added to the contents of that panel.  Here
+								//we're putting together a div that holds info on the post
+
+							);
+
+							var space = $('<div><br/></div>');
+
+							$("questionBox").append(space);
+						}
+					}
+					else {
+						console.log("Accessing the database but not pulling down the posts?")
+					}
+				},
+				error: function (e) {
+					alert("Getting the Posts isn't working correctly!");
+				}
+			});
+
+		}
+
 	
-		function CaptureQuestionAnswerOne()
-		{
-			var radios = document.getElementsByName('Q1');	
-			for (var i = 0; i < radios.length; i++)
-			{
-				if (radios[i].checked)
-				{
-					answer = radios[i].value;
-					alert(answer);
+		function CaptureResponsesOne() {
+			//var webMethod = "WebService.asmx/GiveResponsesOne";
+			var responses1 = document.getElementsByName('responses1');
+
+			//Question1
+			for (var i = 0; i < responses1.length; i++) {
+				if (responses1[i].checked) {
+					answer1 = responses1[i].value;
+					alert(answer1);
+					submitResponse(answer1)
 				}
 			}
 		}
 
-		function CaptureQuestionAnswerTwo()
-		{
-			var radios = document.getElementsByName('Q2');
-			for (var i = 0; i < radios.length; i++) {
-				if (radios[i].checked) {
-					answer = radios[i].value;
-					alert(answer);
+		function CaptureResponsesTwo() {
+			//var webMethod = "WebService.asmx/GiveResponsesOne";
+			var responses2 = document.getElementsByName('responses2');
+
+			//Question2
+			for (var i = 0; i < responses2.length; i++) {
+				if (responses2[i].checked) {
+					answer2 = responses2[i].value;
+					alert(answer2);
+					//submitResponse();
 				}
 			}
-        }
+		}
 
         function UpButtonClicking()
         {
@@ -258,32 +317,44 @@
 
 	<div >
 		<div id="questionsPanel" class="contentPanel" style="visibility:hidden; text-align: center;">
+			<br />
+			<!--
+		1.) user gets to page, questions
+		2.) user selects answer, responses gets captured
+		3.) user continues to homepage, questionText and questionResponse goes to database in surveyresponses table -->
+			<!--DISPLAY QUESTIONS-->
+			<div id="questionBox" class="questionBox">
+				<form onsubmit="LoadQuestions()"></form>
+			</div>
 
-            <br />
+			<!--CAPTURE RESPONSES-->
+			<div id="responseBox" class="responseBox">
+				<div id="questionBox1">
+					<input type="radio" name="responses1" value="1" onclick="CaptureResponsesOne()">1<br>
+					<input type="radio" name="responses1" value="2" onclick="CaptureResponsesOne()">2<br>
+					<input type="radio" name="responses1" value="3" onclick="CaptureResponsesOne()">3<br>
+					<input type="radio" name="responses1" value="4" onclick="CaptureResponsesOne()">4<br>
+					<input type="radio" name="responses1" value="5" onclick="CaptureResponsesOne()">5<br>
+				</div>
 
-			<div class="questionsBox" id="questionBox" style="display:inline-block;">
-                
-				<h1>Do us a solid and answer these quick two questions:</h1>
+				<div id="questionBox2">
+					<input type="radio" name="responses2" value="1" onclick="CaptureResponsesTwo()">1<br>
+					<input type="radio" name="responses2" value="2" onclick="CaptureResponsesTwo()">2<br>
+					<input type="radio" name="responses2" value="3" onclick="CaptureResponsesTwo()">3<br>
+					<input type="radio" name="responses2" value="4" onclick="CaptureResponsesTwo()">4<br>
+					<input type="radio" name="responses2" value="5" onclick="CaptureResponsesTwo()">5<br>
+				</div>
 
-				<!--QUESTION1-->
-				<br />Sample Question #1<br />
-				<input type="radio" name="Q1" value="Yes, you guys are killing it." onclick="CaptureQuestionAnswerOne();"/>Yes
-				<br />
-				<input type="radio" name="Q1" value="It could be better.." onclick="CaptureQuestionAnswerOne();"/>No
-				
-
-				<!--QUESTION2-->
-				<br />Sample Question #2<br />
-				<input type="radio" name="Q2" value="Show me the money." onclick="CaptureQuestionAnswerTwo();"/>Yes
-				<br />
-				<input type="radio" name="Q2" value="More company swag!" onclick="CaptureQuestionAnswerTwo();"/>No
-				<br /><br />
 				<!--CONTINUE TO HOMEPAGE-->
-				<button onclick="showPanel('homePanel')",
-						style="border-radius:12px;width: 10em;" >Continue to Home</button>
+				<div id="continueToHomePage">
+					<button onclick="showPanel('homePanel)" ,
+							style="border-radius:12px;width: 10em;">
+						Continue to Home
+					</button>
+				</div>
 			</div>
 		</div>
-	</div>
+		</div>
 
 
 

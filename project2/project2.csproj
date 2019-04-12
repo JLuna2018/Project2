@@ -96,6 +96,7 @@
     </Compile>
     <Compile Include="mediaPost.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="questions.cs" />
     <Compile Include="WebService.asmx.cs">
       <DependentUpon>WebService.asmx</DependentUpon>
       <SubType>Component</SubType>
