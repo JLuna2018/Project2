@@ -67,7 +67,7 @@
 					//but honestly I don't know...)
 					if (msg.d) {
 						//server replied true, so show the accounts panel
-						alert("Login successful! Welcome.");
+						//alert("Login successful! Welcome.");
 						showPanel('questionsPanel');
 						LoadQuestions();
 					}
@@ -218,7 +218,7 @@
 			for (var i = 0; i < responses1.length; i++) {
 				if (responses1[i].checked) {
 					answer1 = responses1[i].value;
-					alert(answer1);
+					//alert(answer1);
 					submitResponse(answer1)
 				}
 			}
@@ -232,7 +232,7 @@
 			for (var i = 0; i < responses2.length; i++) {
 				if (responses2[i].checked) {
 					answer2 = responses2[i].value;
-					alert(answer2);
+					//alert(answer2);
 					//submitResponse();
 				}
 			}
@@ -265,7 +265,8 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (msg) {
-                    alert("Idea was successfully submitted!");
+                    //alert("Idea was successfully submitted!");
+
                 },
                 error: function (e) {
                     alert("Unable to contact database.");
@@ -516,7 +517,7 @@
         <div class="header-main">
 
             <h1>
-                Weekly Reports.
+                Weekly Reports
             </h1>
 
             <button onclick=showPanel('homePanel') class="button">Home</button>
@@ -537,13 +538,22 @@
             <br />
         </div>
 
-        <div>
-
+        <div class="imageWrapper">
+            <div id=" image1">
             <img src="graph1.jpg" id="Graph1" alt="First Graph">
+            </div>
 
+            <br />
+
+            <div id="image2">
             <img src="graph2.jpg" id="Graph2" alt="Second Graph">
+            </div>
 
+            <br />
+
+            <div id="image3">
             <img src="graph3.jpg" id="Graph3" alt="Third Graph">
+            </div>
 
         </div>
 
