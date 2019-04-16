@@ -134,24 +134,52 @@ font-size: 24px;
 
 #Graph1
 {
-    width: 25%;
-    height: 25%;
+    width: 70%;
+    height: 70%;
+   
 }
 
 #Graph2 {
-    width: 25%;
-    height: 25%;
-    margin-left: 10%;
-    margin-right: 10%;
+    width: 70%;
+    height: 70%;
+
 }
 
 #Graph3
 {
-    width: 25%;
-    height: 25%;
+    width: 70%;
+    height: 70%;
 }
 
 .spaceCreate 
 {
     clear: both;
 }
+
+.imageWrapper
+{
+    vertical-align:middle;
+    display:block;
+
+}
+
+#image1 img,
+#image2 img,
+#image3 img {
+    background-color: #00f;
+    vertical-align: top;
+}
+
+.image1,
+.image2,
+image3 {
+    display: block;
+}
+
+#image1,
+@image2,
+#image3{
+    padding: 20px;
+}
+
+
