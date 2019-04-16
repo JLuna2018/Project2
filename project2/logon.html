@@ -67,13 +67,11 @@
 					//but honestly I don't know...)
 					if (msg.d) {
 						//server replied true, so show the accounts panel
-						//alert("Login successful! Welcome.");
 						showPanel('questionsPanel');
 						LoadQuestions();
 					}
 					else {
 						//server replied false, so let the user know
-						//the logon failed
 						alert("logon failed");
 					}
 				},
@@ -82,7 +80,6 @@
 					//message to the server or the server processing that message,
 					//then this function mapped to the error key is executed rather
 					//than the one mapped to the success key.  This is just a garbage
-					//alert becaue I'm lazy
 					alert("Issue with Connection.");
 				}
 			});
@@ -124,7 +121,7 @@
 
 
                             post = "<div class='postRow' id='sm" + postsArray[i].postNumber + "'>" + "<br>" + 
-                                "<button  class='UpArrows';>&circ;</button>" + "<br>" + "<br><br>" + "<button  class='DownArrows';>&caron;</button>" + 
+                                "<button  class='UpArrows';>&circ;</button>" + 
                                 "<img src='https://picsum.photos/100/100/?image=" + i + "' alt='Random Profile Picture' id='smPic" + postsArray[i].postNumber +  "'>" + " <br> " +
                                  postsArray[i].postText + "<br><br> </div>"
 
@@ -218,7 +215,6 @@
 			for (var i = 0; i < responses1.length; i++) {
 				if (responses1[i].checked) {
 					answer1 = responses1[i].value;
-					//alert(answer1);
 					submitResponse(answer1)
 				}
 			}
@@ -232,8 +228,7 @@
 			for (var i = 0; i < responses2.length; i++) {
 				if (responses2[i].checked) {
 					answer2 = responses2[i].value;
-					//alert(answer2);
-					//submitResponse();
+					submitResponse(answer2);
 				}
 			}
 		}
@@ -289,8 +284,7 @@
         <div id="logonPanel" class="contentPanel logonPanel">
             <div class="logonBox">
                 <form onsubmit="LogOn($('#logonId').val()); return false;">
-                    <h1>Feedback App</h1>
-                    <h3>Login Screen</h3>
+                    <img src="collablogo.jpg" />
                     <p>
                         <br>
                         <em>Username</em>:
@@ -303,10 +297,6 @@
                     </p>
                     <br><br>
                 </form>
-
-                <div class="feedback-image">
-                    <img src="feedback.png" alt="feedback" id="feedback-image">
-                </div>
 
             </div>
             <footer id="footer">
@@ -324,30 +314,42 @@
 		2.) user selects answer, responses gets captured
 		3.) user continues to homepage, questionText and questionResponse goes to database in surveyresponses table -->
 			<!--DISPLAY QUESTIONS-->
-			<div id="questionBox" class="questionBox">
+			<div id="questionBox" class="questionBox" align="center">
 			</div>
 
 			<!--CAPTURE RESPONSES-->
-			<div id="responseBox" class="responseBox">
-				<div id="questionBox1">
-					<input type="radio" name="responses1" value="1" onclick="CaptureResponsesOne()">1<br>
-					<input type="radio" name="responses1" value="2" onclick="CaptureResponsesOne()">2<br>
-					<input type="radio" name="responses1" value="3" onclick="CaptureResponsesOne()">3<br>
-					<input type="radio" name="responses1" value="4" onclick="CaptureResponsesOne()">4<br>
-					<input type="radio" name="responses1" value="5" onclick="CaptureResponsesOne()">5<br>
-				</div>
+			<div id="responseBox" class="responseBox" align="center">
+                <div id="questionBox1">
+                    <table>
+                        <tr>
+                            <td>Little</td>
+                            <td><input type="radio" name="responses1" value="1" onclick="CaptureResponsesOne()">1</td>
+                            <td><input type="radio" name="responses1" value="2" onclick="CaptureResponsesOne()">2</td>
+                            <td><input type="radio" name="responses1" value="3" onclick="CaptureResponsesOne()">3</td>
+                            <td><input type="radio" name="responses1" value="4" onclick="CaptureResponsesOne()">4</td>
+                            <td><input type="radio" name="responses1" value="5" onclick="CaptureResponsesOne()">5</td>
+                            <td>Very</td>
+                        </tr>
+                    </table>
+                </div>
 
 				<div id="questionBox2">
-					<input type="radio" name="responses2" value="1" onclick="CaptureResponsesTwo()">1<br>
-					<input type="radio" name="responses2" value="2" onclick="CaptureResponsesTwo()">2<br>
-					<input type="radio" name="responses2" value="3" onclick="CaptureResponsesTwo()">3<br>
-					<input type="radio" name="responses2" value="4" onclick="CaptureResponsesTwo()">4<br>
-					<input type="radio" name="responses2" value="5" onclick="CaptureResponsesTwo()">5<br>
+                    <table>
+                        <tr>
+                            <td>Little</td>
+                            <td><input type="radio" name="responses2" value="1" onclick="CaptureResponsesTwo()">1</td>
+                            <td><input type="radio" name="responses2" value="2" onclick="CaptureResponsesTwo()">2</td>
+                            <td><input type="radio" name="responses2" value="3" onclick="CaptureResponsesTwo()">3</td>
+                            <td><input type="radio" name="responses2" value="4" onclick="CaptureResponsesTwo()">4</td>
+                            <td><input type="radio" name="responses2" value="5" onclick="CaptureResponsesTwo()">5</td>
+                            <td>Very</td>
+                        </tr>
+                    </table>
 				</div>
 
 				<!--CONTINUE TO HOMEPAGE-->
 				<div id="continueToHomePage">
-					<button onclick="showPanel('homePanel')">Continue to Home</button>
+					<button onclick="showPanel('profilePanel')">Continue</button>
 				</div>
 			</div>
 		</div>
@@ -364,12 +366,12 @@
                 <div class="header-main">
 
                     <h1>
-                        Home!
+                        Home
                     </h1>
 
                     <button onclick="showPanel('ideaPanel')" class="button">Idea Submission</button>
-                    <button onclick=showPanel('profilePanel') class="button">Your Profile</button>
-                    <button onclick="LoadPosts(); showPanel('socialPanel')" class="button">Social Page</button>
+                    <button onclick=showPanel('profilePanel') class="button">Profile</button>
+                    <button onclick="LoadPosts(); showPanel('socialPanel')" class="button">Social</button>
                     <button onclick=showPanel('analyticsPanel') class="button">Analytics</button>
                     <button onclick=showPanel('logonPanel') class="button">Exit</button>
                 </div>
@@ -395,21 +397,17 @@
 
     <div id="socialPanel" class="contentPanel" style="visibility:hidden;">
         <div class="header-main" style="text-align:center;">
-
             <h1>
-                Here are recent posts from your peers!
+                Profile
             </h1>
-
-            <button onclick=showPanel('homePanel') class="button">Home</button>
             <button onclick=showPanel('ideaPanel') class="button">Idea Submission</button>
-            <button onclick=showPanel('profilePanel') class="button">Your Profile</button>
+            <button onclick=showPanel('profilePanel') class="button">Profile</button>
             <button onclick=showPanel('analyticsPanel') class="button">Analytics</button>
             <button onclick=showPanel('logonPanel') class="button">Exit</button>
         </div>
 
         <div id="sHead">
             <!--<img src="media.png" alt="social media" id="smPic">-->
-            <em>Social Media</em>
         </div>
 
         <div id="postsBox" class="postsBox" style="display:inline-block;width:50%;">
@@ -434,12 +432,11 @@
         <div class="header-main">
 
             <h1>
-                Submit any game changing ideas on your mind here!
+                Submit innovative ideas here!
             </h1>
 
-            <button onclick=showPanel('homePanel') class="button">Home</button>
-            <button onclick=showPanel('profilePanel') class="button">Your Profile</button>
-            <button onclick="showPanel('socialPanel'); LoadPosts()" class="button">Social Page</button>
+            <button onclick=showPanel('profilePanel') class="button">Profile</button>
+            <button onclick="showPanel('socialPanel'); LoadPosts()" class="button">Social</button>
             <button onclick=showPanel('analyticsPanel') class="button">Analytics</button>
             <button onclick=showPanel('logonPanel') class="button">Exit</button>
         </div>
@@ -465,38 +462,31 @@
         <footer id="footer">
             Copyright &copy; 2019 Team Nala
         </footer>
-
-
     </div>
-
-
-
-
-
 
     <div id="profilePanel" class="contentPanel" style="visibility:hidden;">
         <div class="header-main">
 
             <h1>
-                Your Profile!
+                Profile
             </h1>
 
-            <button onclick=showPanel('homePanel') class="button">Home</button>
             <button onclick=showPanel('ideaPanel') class="button">Idea Submission</button>
-            <button onclick="showPanel('socialPanel'); LoadPosts()" class="button">Social Page</button>
+            <button onclick="showPanel('socialPanel'); LoadPosts()" class="button">Social</button>
             <button onclick=showPanel('analyticsPanel') class="button">Analytics</button>
             <button onclick=showPanel('logonPanel') class="button">Exit</button>
         </div>
 
         <div class="header-image" style="text-align: center;">
             <p><br></p>
-            <img src="https://picsum.photos/200/300/?random" alt="profile picture" style="border-radius: 50%;">
+            <img src="JessBio.jpg" alt="profile picture" style="border-radius: 50%;" width="200px">
             <p><br></p>
             <div id="profileInfo" style="display:inline-block;width: 50%;">
                 <p><br></p>
-                <p>Position: Systems Analyst</p>
-                <p>Department: Information Systems</p>
-                <p>Participation Points: 0<br><br></p>
+                <p>Jessica Sheldon</p>
+                <p>Systems Analyst</p>
+                <p>Information Systems</p>
+                <p>Participation Points: 110<br><br></p>
             </div>
         </div>
 
@@ -504,26 +494,18 @@
         <footer id="footer">
             Copyright &copy; 2019 Team Nala
         </footer>
-
-
     </div>
-
-
-
-
-
 
     <div id="analyticsPanel" class="contentPanel" style="visibility:hidden;">
         <div class="header-main">
 
             <h1>
-                Weekly Reports
+                Analytics
             </h1>
 
-            <button onclick=showPanel('homePanel') class="button">Home</button>
             <button onclick=showPanel('ideaPanel') class="button">Idea Submission</button>
-            <button onclick=showPanel('profilePanel') class="button">Your Profile</button>
-            <button onclick="showPanel('socialPanel'); LoadPosts()" class="button">Social Page</button>
+            <button onclick=showPanel('profilePanel') class="button">Profile</button>
+            <button onclick="showPanel('socialPanel'); LoadPosts()" class="button">Social</button>
             <button onclick=showPanel('logonPanel') class="button">Exit</button>
         </div>
 
@@ -568,11 +550,6 @@
 
 
     </div>
-
-
-
-
-
 
 
 </body>

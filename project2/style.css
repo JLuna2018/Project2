@@ -1,7 +1,7 @@
 ﻿* {
     margin: 0;
     padding: 0;
-    font-family: "Courier new", Courier, monospace;
+    font-family: sans-serif;
 }
 
 body {
@@ -11,7 +11,7 @@ body {
 html, body {
     height: 100%;
     overflow: auto;
-    background-color: #7FAAFF;
+    background-color: white;
     background-size: auto;
     background-position: center;
 }
@@ -82,7 +82,7 @@ footer {
 #sHead 
 {
     font-size: 20px;
-    font-family: 'Bradley Hand ITC', cursive, sans-serif;
+    font-family: sans-serif;
 }
 
 #profileInfo {
@@ -105,26 +105,13 @@ footer {
     background-color: forestgreen;
 }
 
-.DownArrows {
-    display: inline-block;
-    width: 40px;
-    height: 40px;
-    float: right;
-    font-size: 40px;
-    border-radius: 20px;
-    margin-right: 3px;
-}
-
-.DownArrows:hover {
-    background-color: lightcoral;
-}
-
 #questionBox {
 background-color: white;
 border: 1px solid black;
 border-radius: 12px;
-width: 50%;
+width: 100%;
 font-size: 24px;
+align-content: center;
 }
 
 #ideaText 
